@@ -31,8 +31,8 @@ class UNIVERSALINTERFACE_API IUniversalInterfaces
 
 public:
 
+	/** 字符串通用接口 */
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
-		/** 字符串通用接口 */
 		FString ICommunication(UObject* Object, const FString& String, UObject*& ReturnObject);
 		/** 字符串通用接口 */
 		virtual FString ICommunication_Implementation(UObject* Object, const FString& String, UObject*& ReturnObject);
