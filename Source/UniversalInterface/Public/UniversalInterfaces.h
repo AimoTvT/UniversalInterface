@@ -16,6 +16,8 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
+#include "Kismet/BlueprintFunctionLibrary.h"
+
 #include "UniversalInterfaces.generated.h"
 
 /**
