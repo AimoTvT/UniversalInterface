@@ -18,28 +18,24 @@
 
 FString IUniversalInterfaces::ICommunication_Implementation(UObject* Object, const FString& String, UObject*& ReturnObject)
 {
-	return "Null";
+	return FString();
 }
 
 
 FString UUniversalInterfacesStatic::ICommunication(UObject* Owner, UObject* Object, const FString& String)
 {
-
 	if (Owner && Owner->GetClass()->ImplementsInterface(UUniversalInterfaces::StaticClass()))
 	{
-		UObject* GObject = nullptr;
-		return IUniversalInterfaces::Execute_ICommunication(Owner, Object, String, GObject);
+		return IUniversalInterfaces::Execute_ICommunication(Owner, Object, String, Object);
 	}
-	return "Null";
+	return FString();
 }
 
 FString UUniversalInterfacesStatic::ICommunication(UObject* Owner, UObject* Object, const FString& String, UObject*& ReturnObject)
 {
 	if (Owner && Owner->GetClass()->ImplementsInterface(UUniversalInterfaces::StaticClass()))
 	{
-		//IUniversalInterfaces* IObject = Cast<IUniversalInterfaces>(Owner);
-		
 		return IUniversalInterfaces::Execute_ICommunication(Owner, Object, String, ReturnObject);
 	}
-	return "Null";
+	return FString();
 }
