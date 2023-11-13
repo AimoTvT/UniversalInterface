@@ -30,10 +30,6 @@ class UUniversalInterfaces : public UInterface
 
 public:
 
-	/** 字符串通用接口返回Object */
-	//static FString ICommunications(UObject* Owner, UObject* Object, const FString& String, UObject*& ReturnObject);
-	/** 字符串通用接口 */
-	//static FString ICommunications(UObject* Owner, UObject* Object, const FString& String);
 };
 
 /**
