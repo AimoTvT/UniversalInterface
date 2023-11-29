@@ -20,9 +20,9 @@
 
 #include "UniversalInterfaces.generated.h"
 
-/**
- * 
- */
+ /**
+  *
+  */
 UINTERFACE(MinimalAPI) //UNIVERSALINTERFACE_API 
 class UUniversalInterfaces : public UInterface
 {
@@ -43,9 +43,9 @@ public:
 
 	/** 字符串通用接口 */
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
-		FString ICommunication(UObject* Object, const FString& String, UObject*& ReturnObject);
-		/** 字符串通用接口 */
-		virtual FString ICommunication_Implementation(UObject* Object, const FString& String, UObject*& ReturnObject);
+	FString ICommunication(UObject* Object, const FString& String, UObject*& ReturnObject);
+	/** 字符串通用接口 */
+	virtual FString ICommunication_Implementation(UObject* Object, const FString& String, UObject*& ReturnObject);
 
 };
 
@@ -55,7 +55,7 @@ class UNIVERSALINTERFACE_API UUniversalInterfacesStatic : public UBlueprintFunct
 	GENERATED_BODY()
 
 public:
-	
+
 	/** 字符串通用接口 */
 	static FString ICommunication(UObject* Owner, UObject* Object, const FString& String);
 
