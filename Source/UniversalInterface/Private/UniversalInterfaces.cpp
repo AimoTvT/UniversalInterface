@@ -21,6 +21,11 @@ FString IUniversalInterfaces::ICommunication_Implementation(UObject* Object, con
 	return FString();
 }
 
+uint8 IUniversalInterfaces::IUse_Implementation(UObject* Object, const FString& UseString, uint8 UseIndex)
+{
+	return uint8();
+}
+
 
 FString UUniversalInterfacesStatic::ICommunication(UObject* Owner, UObject* Object, const FString& String)
 {
@@ -38,4 +43,13 @@ FString UUniversalInterfacesStatic::ICommunication(UObject* Owner, UObject* Obje
 		return IUniversalInterfaces::Execute_ICommunication(Owner, Object, String, ReturnObject);
 	}
 	return FString();
+}
+
+uint8 UUniversalInterfacesStatic::IUse(UObject* Owner, UObject* Object, const FString& UseString, uint8 UseIndex)
+{
+	if (Owner && Owner->GetClass()->ImplementsInterface(UUniversalInterfaces::StaticClass()))
+	{
+		return IUniversalInterfaces::Execute_IUse(Owner, Object, UseString, UseIndex);
+	}
+	return uint8();
 }

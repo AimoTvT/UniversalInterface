@@ -47,6 +47,13 @@ public:
 	/** 字符串通用接口 */
 	virtual FString ICommunication_Implementation(UObject* Object, const FString& String, UObject*& ReturnObject);
 
+
+	/** 使用通用接口 */
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
+	uint8 IUse(UObject* Object, const FString& String, uint8 UseIndex);
+	/** 使用通用接口 */
+	virtual uint8 IUse_Implementation(UObject* Object, const FString& UseString, uint8 UseIndex);
+
 };
 
 UCLASS(Blueprintable)
@@ -61,5 +68,8 @@ public:
 
 	/** 字符串通用接口返回Object */
 	static FString ICommunication(UObject* Owner, UObject* Object, const FString& String, UObject*& ReturnObject);
+
+	/** 使用通用接口 */
+	static uint8 IUse(UObject* Owner, UObject* Object, const FString& UseString, uint8 UseIndex);
 
 };
