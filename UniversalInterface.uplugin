@@ -12,9 +12,7 @@
 	"SupportURL": "mailto:3232199020@qq.com",
 	"EngineVersion": "5.3.0",
 	"CanContainContent": true,
-	"IsBetaVersion": false,
-	"IsExperimentalVersion": false,
-	"Installed": false,
+	"Installed": true,
 	"Modules": [
 		{
 			"Name": "UniversalInterface",
@@ -22,10 +20,7 @@
 			"LoadingPhase": "PreLoadingScreen",
 			"PlatformAllowList": [
 				"Win64",
-				"Android",
-				"Linux",
-				"Mac",
-				"IOS"
+				"Android"
 			]
 		}
 	]
