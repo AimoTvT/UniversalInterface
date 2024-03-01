@@ -3,7 +3,7 @@
  * Open Source: June 29, 2023
  * making address: https://github.com/AimoTvT/UniversalInterface
  * We welcome the contributions of powerful movers and movers to join this plugin
- * Build powerful plugins together!!
+ * Build powerful plugins together!!!
  *
  * 版权所有权: Aimo_皑墨
  * 开源时间: 2023年6月29号
@@ -47,6 +47,13 @@ public:
 	/** 字符串通用接口 */
 	virtual FString ICommunication_Implementation(UObject* Object, const FString& String, UObject*& ReturnObject);
 
+
+	/** 使用通用接口 */
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
+	uint8 IUse(UObject* Object, const FString& String, uint8 UseIndex);
+	/** 使用通用接口 */
+	virtual uint8 IUse_Implementation(UObject* Object, const FString& UseString, uint8 UseIndex);
+
 };
 
 UCLASS(Blueprintable)
@@ -59,7 +66,10 @@ public:
 	/** 字符串通用接口 */
 	static FString ICommunication(UObject* Owner, UObject* Object, const FString& String);
 
-	/** 字符串通用接口返回Object */
+	/** 字符串通用接口返回 Object */
 	static FString ICommunication(UObject* Owner, UObject* Object, const FString& String, UObject*& ReturnObject);
+
+	/** 使用通用接口 */
+	static uint8 IUse(UObject* Owner, UObject* Object, const FString& UseString, uint8 UseIndex);
 
 };
