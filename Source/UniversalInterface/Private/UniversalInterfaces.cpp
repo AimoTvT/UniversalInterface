@@ -1,4 +1,4 @@
-/**
+/** *
  * Copyright: Aimo_皑墨
  * Open Source: June 29, 2023
  * making address: https://github.com/AimoTvT/UniversalInterface
@@ -16,40 +16,40 @@
 #include "UniversalInterfaces.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 
-FString IUniversalInterfaces::ICommunication_Implementation(UObject* Object, const FString& String, UObject*& ReturnObject)
+FString IUniversalInterfaces::ICommunication_Implementation(UObject* InObject, const FString& InString, UObject*& InReturnObject)
 {
 	return FString();
 }
 
-uint8 IUniversalInterfaces::IUse_Implementation(UObject* Object, const FString& UseString, uint8 UseIndex)
+uint8 IUniversalInterfaces::IUse_Implementation(UObject* InObject, const FString& InUseString, uint8 InUseIndex)
 {
 	return uint8();
 }
 
 
-FString UUniversalInterfacesStatic::ICommunication(UObject* Owner, UObject* Object, const FString& String)
+FString UUniversalInterfacesStatic::ICommunication(UObject* Owner, UObject* InObject, const FString& InString)
 {
 	if (Owner && Owner->GetClass()->ImplementsInterface(UUniversalInterfaces::StaticClass()))
 	{
-		return IUniversalInterfaces::Execute_ICommunication(Owner, Object, String, Object);
+		return IUniversalInterfaces::Execute_ICommunication(Owner, InObject, InString, InObject);
 	}
 	return FString();
 }
 
-FString UUniversalInterfacesStatic::ICommunication(UObject* Owner, UObject* Object, const FString& String, UObject*& ReturnObject)
+FString UUniversalInterfacesStatic::ICommunication(UObject* Owner, UObject* InObject, const FString& InString, UObject*& InReturnObject)
 {
 	if (Owner && Owner->GetClass()->ImplementsInterface(UUniversalInterfaces::StaticClass()))
 	{
-		return IUniversalInterfaces::Execute_ICommunication(Owner, Object, String, ReturnObject);
+		return IUniversalInterfaces::Execute_ICommunication(Owner, InObject, InString, InReturnObject);
 	}
 	return FString();
 }
 
-uint8 UUniversalInterfacesStatic::IUse(UObject* Owner, UObject* Object, const FString& UseString, uint8 UseIndex)
+uint8 UUniversalInterfacesStatic::IUse(UObject* Owner, UObject* InObject, const FString& InUseString, uint8 InUseIndex)
 {
 	if (Owner && Owner->GetClass()->ImplementsInterface(UUniversalInterfaces::StaticClass()))
 	{
-		return IUniversalInterfaces::Execute_IUse(Owner, Object, UseString, UseIndex);
+		return IUniversalInterfaces::Execute_IUse(Owner, InObject, InUseString, InUseIndex);
 	}
 	return uint8();
 }
