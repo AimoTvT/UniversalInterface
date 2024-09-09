@@ -54,6 +54,12 @@ public:
 	/** * 使用通用接口 */
 	virtual uint8 IUse_Implementation(UObject* InObject, const FString& InUseString, uint8 InUseIndex);
 
+	/** * 使用FID接口,各种int64ID,InIndex可以用自己索引来转换 */
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
+	int64 IFID(UObject* InObject, int64 FID, uint8 InIndex);
+	/** * 使用功能ID接口,各种int64ID,InIndex可以用自己索引来转换 */
+	virtual int64 IFID_Implementation(UObject* InObject, int64 FID, uint8 InIndex);
+
 };
 
 UCLASS(Blueprintable)
@@ -72,4 +78,6 @@ public:
 	/** * 使用通用接口 */
 	static uint8 IUse(UObject* Owner, UObject* InObject, const FString& InUseString, uint8 InUseIndex);
 
+	/** * 使用通用接口 */
+	static int64 IFID(UObject* Owner, UObject* InObject, int64 FID, uint8 InIndex);
 };
