@@ -1,4 +1,4 @@
-/**
+/** *
  * Copyright: Aimo_皑墨
  * Open Source: June 29, 2023
  * making address: https://github.com/AimoTvT/UniversalInterface
@@ -20,7 +20,7 @@
 
 #include "UniversalInterfaces.generated.h"
 
- /**
+ /** *
   *
   */
 UINTERFACE(MinimalAPI) //UNIVERSALINTERFACE_API 
@@ -32,7 +32,7 @@ public:
 
 };
 
-/**
+/** *
  *
  */
 class UNIVERSALINTERFACE_API IUniversalInterfaces
@@ -41,18 +41,24 @@ class UNIVERSALINTERFACE_API IUniversalInterfaces
 
 public:
 
-	/** 字符串通用接口 */
+	/** * 字符串通用接口 */
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
-	FString ICommunication(UObject* Object, const FString& String, UObject*& ReturnObject);
-	/** 字符串通用接口 */
-	virtual FString ICommunication_Implementation(UObject* Object, const FString& String, UObject*& ReturnObject);
+	FString ICommunication(UObject* InObject, const FString& InString, UObject*& InReturnObject);
+	/** * 字符串通用接口 */
+	virtual FString ICommunication_Implementation(UObject* InObject, const FString& InString, UObject*& InReturnObject);
 
 
-	/** 使用通用接口 */
+	/** * 使用通用接口 */
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
-	uint8 IUse(UObject* Object, const FString& String, uint8 UseIndex);
-	/** 使用通用接口 */
-	virtual uint8 IUse_Implementation(UObject* Object, const FString& UseString, uint8 UseIndex);
+	uint8 IUse(UObject* InObject, const FString& InString, uint8 InUseIndex);
+	/** * 使用通用接口 */
+	virtual uint8 IUse_Implementation(UObject* InObject, const FString& InUseString, uint8 InUseIndex);
+
+	/** * 使用FID接口,各种int64ID,InIndex可以用自己索引来转换 */
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
+	int64 IFID(UObject* InObject, int64 FID, uint8 InIndex);
+	/** * 使用功能ID接口,各种int64ID,InIndex可以用自己索引来转换 */
+	virtual int64 IFID_Implementation(UObject* InObject, int64 FID, uint8 InIndex);
 
 };
 
@@ -63,13 +69,15 @@ class UNIVERSALINTERFACE_API UUniversalInterfacesStatic : public UBlueprintFunct
 
 public:
 
-	/** 字符串通用接口 */
-	static FString ICommunication(UObject* Owner, UObject* Object, const FString& String);
+	/** * 字符串通用接口 */
+	static FString ICommunication(UObject* Owner, UObject* InObject, const FString& InString);
 
-	/** 字符串通用接口返回 Object */
-	static FString ICommunication(UObject* Owner, UObject* Object, const FString& String, UObject*& ReturnObject);
+	/** * 字符串通用接口返回 Object */
+	static FString ICommunication(UObject* Owner, UObject* InObject, const FString& InString, UObject*& InReturnObject);
 
-	/** 使用通用接口 */
-	static uint8 IUse(UObject* Owner, UObject* Object, const FString& UseString, uint8 UseIndex);
+	/** * 使用通用接口 */
+	static uint8 IUse(UObject* Owner, UObject* InObject, const FString& InUseString, uint8 InUseIndex);
 
+	/** * 使用通用接口 */
+	static int64 IFID(UObject* Owner, UObject* InObject, int64 FID, uint8 InIndex);
 };
