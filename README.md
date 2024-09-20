@@ -1,22 +1,169 @@
 # UEAimoPlugins
 
-> - Aimo 虚幻引擎插件(>=5.3)
-> - 建议示例,配合插件解析函数来解析
-> - 变量,Get
-> - 变量,{Set,x}
-> - 数据,{变量,{Set,x}}
->
-> - ### UniversalInterfaces.h //头文件
->
-> - > - FString ICommunication(UObject* Owner, UObject* Object, const FString& String); //函数参数说明
->
-> - > - FString ICommunication(UObject* Owner, UObject* Object, const FString& String, UObject\*& ReturnObject); //函数重载 参数说明
->
-> - > - 参数解释: Owner //通讯目标
->
-> - > - 参数解释: Object //通讯传输实例(可能对方需要的实例)
->
-> - > - 参数解释: String //通讯信息
->
-> - > - 参数解释: ReturnObject //通讯返回的实例(可能是你需要的实例)
+ * Plug-in description: A fast and unified interface
+ * Copyright: Aimo_皑墨
+ * Open Source: June 29, 2023
+ * making address: https://github.com/AimoTvT/UniversalInterface
+ * We welcome the contributions of powerful movers and movers to join this plugin
+ * Build powerful plugins together!!!
+ *
+ * 插件描述: 一个快捷统一的接口
+ * 版权所有权: Aimo_皑墨
+ * 开源时间: 2023年6月29号
+ * GitHub地址: https://github.com/AimoTvT/UniversalInterface
+ * 欢迎有实力的大佬/萌新加入本插件的贡献
+ * 一起打造强大的插件!!!
 
+```C++  
+	//English version, 中文版本在下面
+	#include "UniversalInterfaces.h"
+
+    /** * Generic interface for string
+	* InObject // Raises the target
+	* InString // instruction
+	* InReturnObject // Object to return
+	* return // return instruction
+	*/
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
+    FString ICommunication(UObject* InObject, const FString& InString, UObject*& InReturnObject);
+    /** * Generic interface for string */
+    virtual FString ICommunication_Implementation(UObject* InObject, const FString& InString, UObject*& InReturnObject);
+
+
+   /** * Use a common interface
+	* InObject // Raises the target
+	* InString // instruction
+	* InUseIndex // Indicates the shortcut identifier of the directive
+	* return // return instruction
+	*/
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
+    uint8 IUse(UObject* InObject, const FString& InString, uint8 InUseIndex);
+    /** * Use a common interface */
+    virtual uint8 IUse_Implementation(UObject* InObject, const FString& InUseString, uint8 InUseIndex);
+
+   /** * Using FID interface, various INT64ids,InIndex can be converted with its own index
+	* InObject // Raises the target
+	* FID // Function ID
+	* InIndex // Indicates the shortcut identifier of the instruction
+	* return // return instruction
+	*/
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
+    int64 IFID(UObject* InObject, int64 FID, uint8 InIndex);
+    /** * Using FID interface, various INT64ids,InIndex can be converted with its own index */
+    virtual int64 IFID_Implementation(UObject* InObject, int64 FID, uint8 InIndex);
+
+
+
+	/** * Generic interface for string
+	* Owner // Send target
+	* InObject // Raises the target
+	* InString // instruction
+	* return // return instruction
+	*/
+	static FString ICommunication(UObject* Owner, UObject* InObject, const FString& InString);
+
+	/** * Generic interface for string
+	* InObject // Raises the target
+	* InString // instruction
+	* InReturnObject // Object to return
+	* return // return instruction
+	*/
+	static FString ICommunication(UObject* Owner, UObject* InObject, const FString& InString, UObject*& InReturnObject);
+
+	/** * Use a common interface
+	* Owner // Send target
+	* InObject // Raises the target
+	* InString // instruction
+	* InUseIndex // Indicates the shortcut identifier of the directive
+	* return // return instruction
+	*/
+	static uint8 IUse(UObject* Owner, UObject* InObject, const FString& InUseString, uint8 InUseIndex);
+
+	/** * Using FID interface, various INT64ids,InIndex can be converted with its own index
+	* Owner // Send target
+	* InObject // Raises the target
+	* FID // Function ID
+	* InIndex // Indicates the shortcut identifier of the instruction
+	* return // return instruction
+	*/
+	static int64 IFID(UObject* Owner, UObject* InObject, int64 FID, uint8 InIndex);
+
+```
+
+```C++ 
+	//中文版本
+	#include "UniversalInterfaces.h"
+
+    /** * 字符串通用接口
+        * InObject //引发的目标
+        * InString //指令
+        * InReturnObject //需要返回的Object
+        * return //返回指令
+    */
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
+    FString ICommunication(UObject* InObject, const FString& InString, UObject*& InReturnObject);
+    /** * 字符串通用接口 */
+    virtual FString ICommunication_Implementation(UObject* InObject, const FString& InString, UObject*& InReturnObject);
+
+
+    /** * 使用通用接口 
+        * InObject //引发的目标
+        * InString //指令
+        * InUseIndex //指令的快捷标识
+        * return //返回指令
+    */
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
+    uint8 IUse(UObject* InObject, const FString& InString, uint8 InUseIndex);
+    /** * 使用通用接口 */
+    virtual uint8 IUse_Implementation(UObject* InObject, const FString& InUseString, uint8 InUseIndex);
+
+    /** * 使用FID接口,各种int64ID,InIndex可以用自己索引来转换 
+        * InObject //引发的目标
+        * FID //功能ID
+        * InIndex //指令的快捷标识
+        * return //返回指令
+    */
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
+    int64 IFID(UObject* InObject, int64 FID, uint8 InIndex);
+    /** * 使用功能ID接口,各种int64ID,InIndex可以用自己索引来转换 */
+    virtual int64 IFID_Implementation(UObject* InObject, int64 FID, uint8 InIndex);
+
+
+
+	/** * 字符串通用接口
+		* Owner //发送目标
+		* InObject //引发的目标
+		* InString //指令
+		* InReturnObject //需要返回的Object
+		* return //返回指令
+	*/
+	static FString ICommunication(UObject* Owner, UObject* InObject, const FString& InString);
+
+	/** * 字符串通用接口
+		* Owner //发送目标
+		* InObject //引发的目标
+		* InString //指令
+		* InReturnObject //需要返回的Object
+		* return //返回指令
+	*/
+	static FString ICommunication(UObject* Owner, UObject* InObject, const FString& InString, UObject*& InReturnObject);
+
+	/** * 使用通用接口
+		* Owner //发送目标
+		* InObject //引发的目标
+		* InString //指令
+		* InUseIndex //指令的快捷标识
+		* return //返回指令
+	*/
+	static uint8 IUse(UObject* Owner, UObject* InObject, const FString& InUseString, uint8 InUseIndex);
+
+	/** * 使用FID接口,各种int64ID,InIndex可以用自己索引来转换
+		* Owner //发送目标
+		* InObject //引发的目标
+		* FID //功能ID
+		* InIndex //指令的快捷标识
+		* return //返回指令
+	*/
+	static int64 IFID(UObject* Owner, UObject* InObject, int64 FID, uint8 InIndex);
+
+```
