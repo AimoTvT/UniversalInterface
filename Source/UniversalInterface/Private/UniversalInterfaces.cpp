@@ -1,9 +1,9 @@
-/** *
+/**
  * Copyright: Aimo_皑墨
  * Open Source: June 29, 2023
  * making address: https://github.com/AimoTvT/UniversalInterface
  * We welcome the contributions of powerful movers and movers to join this plugin
- * Build powerful plugins together!!!
+ * Build powerful plugins together!!
  *
  * 版权所有权: Aimo_皑墨
  * 开源时间: 2023年6月29号
@@ -16,54 +16,26 @@
 #include "UniversalInterfaces.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 
-FString IUniversalInterfaces::ICommunication_Implementation(UObject* InObject, const FString& InString, UObject*& InReturnObject)
+FString IUniversalInterfaces::ICommunication_Implementation(UObject* Object, const FString& String, UObject*& ReturnObject)
 {
 	return FString();
 }
 
-uint8 IUniversalInterfaces::IUse_Implementation(UObject* InObject, const FString& InUseString, uint8 InUseIndex)
-{
-	return uint8();
-}
 
-int64 IUniversalInterfaces::IFID_Implementation(UObject* InObject, int64 FID, uint8 InIndex)
-{
-	return int64();
-}
-
-
-FString UUniversalInterfacesStatic::ICommunication(UObject* Owner, UObject* InObject, const FString& InString)
+FString UUniversalInterfacesStatic::ICommunication(UObject* Owner, UObject* Object, const FString& String)
 {
 	if (Owner && Owner->GetClass()->ImplementsInterface(UUniversalInterfaces::StaticClass()))
 	{
-		return IUniversalInterfaces::Execute_ICommunication(Owner, InObject, InString, InObject);
+		return IUniversalInterfaces::Execute_ICommunication(Owner, Object, String, Object);
 	}
 	return FString();
 }
 
-FString UUniversalInterfacesStatic::ICommunication(UObject* Owner, UObject* InObject, const FString& InString, UObject*& InReturnObject)
+FString UUniversalInterfacesStatic::ICommunication(UObject* Owner, UObject* Object, const FString& String, UObject*& ReturnObject)
 {
 	if (Owner && Owner->GetClass()->ImplementsInterface(UUniversalInterfaces::StaticClass()))
 	{
-		return IUniversalInterfaces::Execute_ICommunication(Owner, InObject, InString, InReturnObject);
+		return IUniversalInterfaces::Execute_ICommunication(Owner, Object, String, ReturnObject);
 	}
 	return FString();
-}
-
-uint8 UUniversalInterfacesStatic::IUse(UObject* Owner, UObject* InObject, const FString& InUseString, uint8 InUseIndex)
-{
-	if (Owner && Owner->GetClass()->ImplementsInterface(UUniversalInterfaces::StaticClass()))
-	{
-		return IUniversalInterfaces::Execute_IUse(Owner, InObject, InUseString, InUseIndex);
-	}
-	return uint8();
-}
-
-int64 UUniversalInterfacesStatic::IFID(UObject* Owner, UObject* InObject, int64 FID, uint8 InIndex)
-{
-	if (Owner && Owner->GetClass()->ImplementsInterface(UUniversalInterfaces::StaticClass()))
-	{
-		return IUniversalInterfaces::Execute_IFID(Owner, InObject, FID, InIndex);
-	}
-	return int64();
 }
