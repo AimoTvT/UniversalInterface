@@ -41,20 +41,35 @@ class UNIVERSALINTERFACE_API IUniversalInterfaces
 
 public:
 
-	/** * 字符串通用接口 */
+	/** * 字符串通用接口
+		* InObject //引发的目标
+		* InString //指令
+		* InReturnObject //需要返回的Object
+		* return //返回指令
+	*/
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
 	FString ICommunication(UObject* InObject, const FString& InString, UObject*& InReturnObject);
 	/** * 字符串通用接口 */
 	virtual FString ICommunication_Implementation(UObject* InObject, const FString& InString, UObject*& InReturnObject);
 
 
-	/** * 使用通用接口 */
+	/** * 使用通用接口 
+		* InObject //引发的目标
+		* InString //指令
+		* InUseIndex //指令的快捷标识
+		* return //返回指令
+	*/
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
 	uint8 IUse(UObject* InObject, const FString& InString, uint8 InUseIndex);
 	/** * 使用通用接口 */
 	virtual uint8 IUse_Implementation(UObject* InObject, const FString& InUseString, uint8 InUseIndex);
 
-	/** * 使用FID接口,各种int64ID,InIndex可以用自己索引来转换 */
+	/** * 使用FID接口,各种int64ID,InIndex可以用自己索引来转换 
+		* InObject //引发的目标
+		* FID //功能ID
+		* InIndex //指令的快捷标识
+		* return //返回指令
+	*/
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
 	int64 IFID(UObject* InObject, int64 FID, uint8 InIndex);
 	/** * 使用功能ID接口,各种int64ID,InIndex可以用自己索引来转换 */
@@ -69,15 +84,39 @@ class UNIVERSALINTERFACE_API UUniversalInterfacesStatic : public UBlueprintFunct
 
 public:
 
-	/** * 字符串通用接口 */
+	/** * 字符串通用接口
+		* Owner //发送目标
+		* InObject //引发的目标
+		* InString //指令
+		* InReturnObject //需要返回的Object
+		* return //返回指令
+	*/
 	static FString ICommunication(UObject* Owner, UObject* InObject, const FString& InString);
 
-	/** * 字符串通用接口返回 Object */
+	/** * 字符串通用接口
+		* Owner //发送目标
+		* InObject //引发的目标
+		* InString //指令
+		* InReturnObject //需要返回的Object
+		* return //返回指令
+	*/
 	static FString ICommunication(UObject* Owner, UObject* InObject, const FString& InString, UObject*& InReturnObject);
 
-	/** * 使用通用接口 */
+	/** * 使用通用接口
+		* Owner //发送目标
+		* InObject //引发的目标
+		* InString //指令
+		* InUseIndex //指令的快捷标识
+		* return //返回指令
+	*/
 	static uint8 IUse(UObject* Owner, UObject* InObject, const FString& InUseString, uint8 InUseIndex);
 
-	/** * 使用通用接口 */
+	/** * 使用FID接口,各种int64ID,InIndex可以用自己索引来转换
+		* Owner //发送目标
+		* InObject //引发的目标
+		* FID //功能ID
+		* InIndex //指令的快捷标识
+		* return //返回指令
+	*/
 	static int64 IFID(UObject* Owner, UObject* InObject, int64 FID, uint8 InIndex);
 };
