@@ -26,7 +26,7 @@ uint8 IUniversalInterfaces::IUse_Implementation(UObject* InObject, const FString
 	return uint8();
 }
 
-int64 IUniversalInterfaces::IFID_Implementation(UObject* InObject, int64 FID, uint8 InIndex)
+int64 IUniversalInterfaces::IFid_Implementation(UObject* InObject, int64 Fid, uint8 InIndex)
 {
 	return int64();
 }
@@ -59,11 +59,11 @@ uint8 UUniversalInterfacesStatic::IUse(UObject* Owner, UObject* InObject, const 
 	return uint8();
 }
 
-int64 UUniversalInterfacesStatic::IFID(UObject* Owner, UObject* InObject, int64 FID, uint8 InIndex)
+int64 UUniversalInterfacesStatic::IFid(UObject* Owner, UObject* InObject, int64 Fid, uint8 InIndex)
 {
 	if (Owner && Owner->GetClass()->ImplementsInterface(UUniversalInterfaces::StaticClass()))
 	{
-		return IUniversalInterfaces::Execute_IFID(Owner, InObject, FID, InIndex);
+		return IUniversalInterfaces::Execute_IFid(Owner, InObject, Fid, InIndex);
 	}
 	return int64();
 }

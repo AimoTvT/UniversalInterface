@@ -64,16 +64,16 @@ public:
 	/** * 使用通用接口 */
 	virtual uint8 IUse_Implementation(UObject* InObject, const FString& InUseString, uint8 InUseIndex);
 
-	/** * 使用FID接口,各种int64ID,InIndex可以用自己索引来转换 
+	/** * 使用Fid接口,各种int64ID,InIndex可以用自己索引来转换 
 		* InObject //引发的目标
-		* FID //功能ID
+		* Fid //功能ID
 		* InIndex //指令的快捷标识
 		* return //返回指令
 	*/
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Aimo|Interface")
-	int64 IFID(UObject* InObject, int64 FID, uint8 InIndex);
+	int64 IFid(UObject* InObject, int64 Fid, uint8 InIndex);
 	/** * 使用功能ID接口,各种int64ID,InIndex可以用自己索引来转换 */
-	virtual int64 IFID_Implementation(UObject* InObject, int64 FID, uint8 InIndex);
+	virtual int64 IFid_Implementation(UObject* InObject, int64 Fid, uint8 InIndex);
 
 };
 
@@ -111,12 +111,12 @@ public:
 	*/
 	static uint8 IUse(UObject* Owner, UObject* InObject, const FString& InUseString, uint8 InUseIndex);
 
-	/** * 使用FID接口,各种int64ID,InIndex可以用自己索引来转换
+	/** * 使用Fid接口,各种int64ID,InIndex可以用自己索引来转换
 		* Owner //发送目标
 		* InObject //引发的目标
-		* FID //功能ID
+		* Fid //功能ID
 		* InIndex //指令的快捷标识
 		* return //返回指令
 	*/
-	static int64 IFID(UObject* Owner, UObject* InObject, int64 FID, uint8 InIndex);
+	static int64 IFid(UObject* Owner, UObject* InObject, int64 Fid, uint8 InIndex);
 };
